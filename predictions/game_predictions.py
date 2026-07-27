@@ -2,10 +2,11 @@
 Project Gridiron
 Game Prediction Engine
 
-Version 0.1
+Version 0.2
 """
 
 from ratings.team_ratings import calculate_rating
+from ratings.adjustments import apply_home_field
 
 
 def predict_game(home_team, away_team):
@@ -13,32 +14,39 @@ def predict_game(home_team, away_team):
     home_rating = calculate_rating(home_team)
     away_rating = calculate_rating(away_team)
 
-    difference = home_rating - away_rating
+    home_rating = apply_home_field(home_rating, True)
 
-    if difference > 0:
+    margin = home_rating - away_rating
+
+    if margin > 0:
         winner = home_team["name"]
     else:
         winner = away_team["name"]
 
+    confidence = min(abs(margin) * 10, 95)
+
     return {
         "winner": winner,
-        "margin": round(abs(difference), 2)
+        "projected_margin": round(margin, 2),
+        "confidence": round(confidence, 1)
     }
 
 
-example_home = {
+home_team = {
     "name": "Kansas City Chiefs",
     "offense": 90,
-    "defense": 85
+    "defense": 85,
+    "strength_of_schedule": 82
 }
 
-example_away = {
+away_team = {
     "name": "Buffalo Bills",
     "offense": 87,
-    "defense": 86
+    "defense": 86,
+    "strength_of_schedule": 84
 }
 
 
-prediction = predict_game(example_home, example_away)
+prediction = predict_game(home_team, away_team)
 
 print(prediction)
