@@ -1,33 +1,8 @@
-"""
-Project Gridiron
-Team Rating Engine
-
-Version 0.2
-"""
-
-from data.teams import nfl_teams, college_teams
-
-
 def calculate_rating(team):
     rating = (
-        team["offense"] * 0.4 +
-        team["defense"] * 0.4
+        team["offense"] * 0.35 +
+        team["defense"] * 0.35 +
+        team["strength_of_schedule"] * 0.30
     )
 
     return round(rating, 2)
-
-
-print("NFL Rankings")
-print("----------------")
-
-for team in nfl_teams:
-    rating = calculate_rating(team)
-    print(team["name"], rating)
-
-
-print("\nCollege Football Rankings")
-print("----------------")
-
-for team in college_teams:
-    rating = calculate_rating(team)
-    print(team["name"], rating)
