@@ -9,7 +9,8 @@ from models.rating_storage import load_ratings
 
 
 HOME_FIELD = 50
-
+def elo_win_probability(home_rating, away_rating):
+    return 1 / (1 + 10 ** ((away_rating - home_rating) / 400))
 
 def predict_matchup(home_team, away_team):
 
@@ -20,13 +21,12 @@ def predict_matchup(home_team, away_team):
 
     difference = home_rating - away_rating
 
-    win_probability = 50 + (difference / 10)
+    probability = elo_win_probability(
+    home_rating,
+    away_rating
+)
 
-    if win_probability > 95:
-        win_probability = 95
-
-    if win_probability < 5:
-        win_probability = 5
+win_probability = round(probability * 100, 1)
 
     winner = (
         home_team
