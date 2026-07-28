@@ -1,17 +1,17 @@
 const teams = [
     {
         name: "Kansas City Chiefs",
-        rating: 1500,
-        rank: 1
+        conference: "AFC",
+        rating: 1500
     },
     {
         name: "Philadelphia Eagles",
-        rating: 1500,
-        rank: 2
+        conference: "NFC",
+        rating: 1500
     },
     {
         name: "Buffalo Bills",
-        rating: 1500,
-        rank: 3
+        conference: "AFC",
+        rating: 1500
     }
 ];
