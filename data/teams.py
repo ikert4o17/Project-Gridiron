@@ -1,41 +1,34 @@
-"""
-Project Gridiron
-Team Database
-
-Version 0.2
-"""
-
 nfl_teams = [
-    {
-        "name": "Kansas City Chiefs",
-        "conference": "AFC",
-        "offense": 90,
-        "defense": 85,
-        "strength_of_schedule": 82
-    },
-    {
-        "name": "Philadelphia Eagles",
-        "conference": "NFC",
-        "offense": 88,
-        "defense": 87,
-        "strength_of_schedule": 85
-    }
-]
-
-
-college_teams = [
-    {
-        "name": "Georgia Bulldogs",
-        "conference": "SEC",
-        "offense": 92,
-        "defense": 90,
-        "strength_of_schedule": 88
-    },
-    {
-        "name": "Ohio State Buckeyes",
-        "conference": "Big Ten",
-        "offense": 91,
-        "defense": 88,
-        "strength_of_schedule": 86
-    }
+    {"name": "Arizona Cardinals", "conference": "NFC"},
+    {"name": "Atlanta Falcons", "conference": "NFC"},
+    {"name": "Baltimore Ravens", "conference": "AFC"},
+    {"name": "Buffalo Bills", "conference": "AFC"},
+    {"name": "Carolina Panthers", "conference": "NFC"},
+    {"name": "Chicago Bears", "conference": "NFC"},
+    {"name": "Cincinnati Bengals", "conference": "AFC"},
+    {"name": "Cleveland Browns", "conference": "AFC"},
+    {"name": "Dallas Cowboys", "conference": "NFC"},
+    {"name": "Denver Broncos", "conference": "AFC"},
+    {"name": "Detroit Lions", "conference": "NFC"},
+    {"name": "Green Bay Packers", "conference": "NFC"},
+    {"name": "Houston Texans", "conference": "AFC"},
+    {"name": "Indianapolis Colts", "conference": "AFC"},
+    {"name": "Jacksonville Jaguars", "conference": "AFC"},
+    {"name": "Kansas City Chiefs", "conference": "AFC"},
+    {"name": "Las Vegas Raiders", "conference": "AFC"},
+    {"name": "Los Angeles Chargers", "conference": "AFC"},
+    {"name": "Los Angeles Rams", "conference": "NFC"},
+    {"name": "Miami Dolphins", "conference": "AFC"},
+    {"name": "Minnesota Vikings", "conference": "NFC"},
+    {"name": "New England Patriots", "conference": "AFC"},
+    {"name": "New Orleans Saints", "conference": "NFC"},
+    {"name": "New York Giants", "conference": "NFC"},
+    {"name": "New York Jets", "conference": "AFC"},
+    {"name": "Philadelphia Eagles", "conference": "NFC"},
+    {"name": "Pittsburgh Steelers", "conference": "AFC"},
+    {"name": "San Francisco 49ers", "conference": "NFC"},
+    {"name": "Seattle Seahawks", "conference": "NFC"},
+    {"name": "Tampa Bay Buccaneers", "conference": "NFC"},
+    {"name": "Tennessee Titans", "conference": "AFC"},
+    {"name": "Washington Commanders", "conference": "NFC"}
 ]
