@@ -2,15 +2,20 @@
 Project Gridiron
 Elo Rating Updater
 
-Version 1.0
+Version 1.1
 """
 
-from data.nfl_ratings import nfl_ratings
 from data.results import nfl_results
+from models.rating_storage import (
+    load_ratings,
+    save_ratings
+)
 from ratings.elo import update_elo
 
 
 def update_ratings():
+
+    nfl_ratings = load_ratings()
 
     for game in nfl_results:
 
@@ -36,18 +41,20 @@ def update_ratings():
         nfl_ratings[loser] = new_loser_rating
 
 
+    save_ratings(nfl_ratings)
+
     return nfl_ratings
 
 
-updated_ratings = update_ratings()
+updated = update_ratings()
 
 
-print("🏈 Updated NFL Elo Ratings\n")
+print("🏈 Ratings Updated\n")
 
 for team, rating in sorted(
-    updated_ratings.items(),
+    updated.items(),
     key=lambda x: x[1],
     reverse=True
-)[:10]:
+):
 
     print(f"{team}: {rating}")
