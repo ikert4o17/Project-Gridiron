@@ -17,13 +17,24 @@
 
 <div class="card">
 
-<h2>Kansas City Chiefs</h2>
+<div id="team-info"></div>
 
-<p>Elo Rating: 1500</p>
+<script src="teams.js"></script>
+<script>
 
-<p>Rank: 1</p>
+let team = teams[0];
 
-<p>Trend: Rising</p>
+document.getElementById("team-info").innerHTML = `
+
+<h2>${team.name}</h2>
+
+<p>Elo Rating: ${team.rating}</p>
+
+<p>Rank: ${team.rank}</p>
+
+`;
+
+</script>
 
 </div>
 
