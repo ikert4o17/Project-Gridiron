@@ -17,6 +17,60 @@
 
 <div class="card">
 
+<select id="team-select"></select>
+
+<div id="team-info"></div>
+
+<script src="teams.js"></script>
+
+<script>
+
+const selector = document.getElementById("team-select");
+const info = document.getElementById("team-info");
+
+
+teams.forEach((team, index) => {
+
+    selector.innerHTML += `
+    <option value="${index}">
+        ${team.name}
+    </option>
+    `;
+
+});
+
+
+function showTeam(index){
+
+    let team = teams[index];
+
+    info.innerHTML = `
+
+    <h2>${team.name}</h2>
+
+    <p>Elo Rating: ${team.rating}</p>
+
+    <p>Rank: ${team.rank}</p>
+
+    `;
+
+}
+
+
+selector.addEventListener(
+    "change",
+    function(){
+        showTeam(this.value);
+    }
+);
+
+
+showTeam(0);
+
+</script>
+
+</div>
+
 <div id="team-info"></div>
 
 <script src="teams.js"></script>
