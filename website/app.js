@@ -1,11 +1,16 @@
 const rankingsDiv = document.getElementById("rankings");
 
-rankings.forEach((team, index) => {
+const sortedTeams = [...teams].sort(
+    (a, b) => b.rating - a.rating
+);
+
+
+sortedTeams.forEach((team, index) => {
 
     rankingsDiv.innerHTML +=
     `
     <p>
-    ${index + 1}. ${team.team} — ${team.rating}
+    ${index + 1}. ${team.name} — ${team.rating}
     </p>
     `;
 
