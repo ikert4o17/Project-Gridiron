@@ -18,21 +18,20 @@
 
 <div class="card">
 
-    <input
-        type="text"
-        id="team-search"
-        placeholder="Search for a team..."
-    >
+<input
+    type="text"
+    id="team-search"
+    placeholder="Search for a team..."
+>
 
-    <br><br>
+<br><br>
 
-    <select id="team-select"></select>
+<select id="team-select"></select>
 
-    <br><br>
-
-    <div id="team-info"></div>
+<div id="team-info"></div>
 
 </div>
+
 
 <script src="teams.js"></script>
 
@@ -68,20 +67,30 @@ function showTeam(index) {
 
     const team = teams[index];
 
-    if (!team) return;
+    if (!team) {
+        info.innerHTML = "<p>No team selected.</p>";
+        return;
+    }
 
     info.innerHTML = `
+
         <h2>${team.name}</h2>
 
         <p>Conference: ${team.conference}</p>
 
         <p>Elo Rating: ${team.rating}</p>
+
+        <p>Trend: ${team.trend}</p>
+
     `;
+
 }
 
 
 selector.addEventListener("change", function () {
+
     showTeam(this.value);
+
 });
 
 
@@ -90,18 +99,24 @@ search.addEventListener("input", function () {
     populateSelector(this.value);
 
     if (selector.options.length > 0) {
+
         showTeam(selector.value);
+
     } else {
+
         info.innerHTML = "<p>No teams found.</p>";
+
     }
 
 });
 
 
 populateSelector();
+
 showTeam(0);
 
 </script>
+
 
 </body>
 
