@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
 <nav>
     <a href="index.html">Dashboard</a>
     |
@@ -16,16 +17,22 @@
 <h1>🏈 Team Lookup</h1>
 
 <div class="card">
-<input
-    type="text"
-    id="team-search"
-    placeholder="Search for a team..."
->
 
-<br><br>
-<select id="team-select"></select>
+    <input
+        type="text"
+        id="team-search"
+        placeholder="Search for a team..."
+    >
 
-<div id="team-info"></div>
+    <br><br>
+
+    <select id="team-select"></select>
+
+    <br><br>
+
+    <div id="team-info"></div>
+
+</div>
 
 <script src="teams.js"></script>
 
@@ -33,70 +40,68 @@
 
 const selector = document.getElementById("team-select");
 const info = document.getElementById("team-info");
+const search = document.getElementById("team-search");
 
 
-teams.forEach((team, index) => {
+function populateSelector(filter = "") {
 
-    selector.innerHTML += `
-    <option value="${index}">
-        ${team.name}
-    </option>
-    `;
+    selector.innerHTML = "";
 
-});
+    teams.forEach((team, index) => {
 
+        if (team.name.toLowerCase().includes(filter.toLowerCase())) {
 
-function showTeam(index){
+            selector.innerHTML += `
+                <option value="${index}">
+                    ${team.name}
+                </option>
+            `;
 
-    let team = teams[index];
+        }
 
-    info.innerHTML = `
-
-    <h2>${team.name}</h2>
-
-    <p>Elo Rating: ${team.rating}</p>
-
-    <p>Rank: ${team.rank}</p>
-
-    `;
+    });
 
 }
 
 
-selector.addEventListener(
-    "change",
-    function(){
-        showTeam(this.value);
+function showTeam(index) {
+
+    const team = teams[index];
+
+    if (!team) return;
+
+    info.innerHTML = `
+        <h2>${team.name}</h2>
+
+        <p>Elo Rating: ${team.rating}</p>
+
+        <p>Rank: ${team.rank}</p>
+    `;
+}
+
+
+selector.addEventListener("change", function () {
+    showTeam(this.value);
+});
+
+
+search.addEventListener("input", function () {
+
+    populateSelector(this.value);
+
+    if (selector.options.length > 0) {
+        showTeam(selector.value);
+    } else {
+        info.innerHTML = "<p>No teams found.</p>";
     }
-);
+
+});
 
 
+populateSelector();
 showTeam(0);
 
 </script>
-
-</div>
-
-<div id="team-info"></div>
-
-<script src="teams.js"></script>
-<script>
-
-let team = teams[0];
-
-document.getElementById("team-info").innerHTML = `
-
-<h2>${team.name}</h2>
-
-<p>Elo Rating: ${team.rating}</p>
-
-<p>Rank: ${team.rank}</p>
-
-`;
-
-</script>
-
-</div>
 
 </body>
 
